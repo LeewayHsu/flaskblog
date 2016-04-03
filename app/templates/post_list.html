@@ -1,0 +1,52 @@
+{% extends "_base.html" %}
+{% set active_page = 'admin' %}
+
+{% block head %}
+{% endblock%}
+{% block body %}
+
+<a class="btn btn-primary" href="{{ url_for('main.create_post') }}">新文章</a>
+<hr>
+<table class="table table-bordered">
+    <tr>
+        <th>
+            标题
+        </th>
+        <th>
+            状态
+        </th>
+        <th>
+            操作
+        </th>
+    </tr>
+    {% for post in pagination.items %}
+    <tr>
+        <td style="width:60%">
+            <a href="{{ url_for('main.post_details',id=post.id) }}" target="_blank" style="display:block;margin-top:6px;">{{
+                post.title }}</a>
+        </td>
+        <td>
+            {% if not post.is_published %}
+                未发布
+            {% else %}
+                已发布
+            {% endif %}
+        </td>
+        <td>
+            <a href="{{ url_for('main.edit_post', id=post.id) }}" class="btn btn-info">编辑</a>
+
+            <a href="{{ url_for('main.delete_post', id=post.id)}}" class="btn btn-danger"
+               onclick="javascript:confirm('确定删除该文章？')">删除</a>
+            {% if not post.is_published %}
+                <a href="{{ url_for('main.publish_post', id=post.id) }}" class="btn btn-info">发布</a>
+            {% else %}
+                <a href="{{ url_for('main.not_publish_post', id=post.id) }}" class="btn btn-info">取消发布</a>
+            {% endif %}
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+{% include "pagination.html" %}
+<script>
+</script>
+{% endblock %}

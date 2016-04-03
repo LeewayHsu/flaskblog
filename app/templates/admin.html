@@ -1,0 +1,6 @@
+{% extends "_base.html" %}
+{% set active_page = 'admin' %}
+
+{% block body %}
+    <a class="btn btn-primary" href="{{ url_for('main.post_list') }}">文章管理</a>
+{% endblock %}

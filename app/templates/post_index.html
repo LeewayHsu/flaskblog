@@ -1,0 +1,27 @@
+{% extends "_base.html" %}
+
+{% block body %}
+
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-title">全部文章</h1>
+        </div>
+    </div>
+<div class="row">
+    <div class="col-lg-12">
+        <ul class="post-list">
+            {% for post in pagination.items %}
+            <li>
+                <a href="{{ url_for('main.post_details',id=post.id) }}" target="_blank">{{ post.title }}</a>
+                <span>{{ post.create_time.date() }}</span>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-12">
+        {% include "pagination.html" %}
+    </div>
+</div>
+{% endblock%}

@@ -1,0 +1,50 @@
+{% extends "_base.html" %}
+{% block body %}
+<div class="row">
+    <div class="col-lg-12">
+        <h1 class="post-title">{{ post.title }}</h1>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-12">
+        <div class="post-content">
+            {{ post.body|safe }}
+        </div>
+    </div>
+</div>
+<!-- 评论的样式还没时间做
+<div class="row">
+    <div class="col-lg-12">
+        <ul>
+            <li>
+                {% for comment in post.comments %}
+                <div>
+                    {{ comment.nickname }}
+                </div>
+                <div>
+                    {{ comment.body }}
+                </div>
+                {% endfor %}
+            </li>
+        </ul>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-12">
+        <form action="{{ url_for('main.comment',post_id=post.id)}}" method="post">
+            {{ form.hidden_tag() }}
+            <div class="form-group">
+                {{ form.nickname.label}} {{ form.nickname(class_="form-control") }}
+            </div>
+            <div class="form-group">
+                {{ form.email.label}} {{ form.email(class_="form-control") }}
+            </div>
+            <div class="form-group">
+                {{ form.body.label}} {{ form.body(class_="form-control") }}
+            </div>
+            <input type="submit" class="btn btn-primary" value="保存"/>
+        </form>
+    </div>
+</div>
+{% endblock%}
+-->

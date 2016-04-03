@@ -1,0 +1,21 @@
+{% extends "_base.html"%}
+{% block body %}
+
+<form action="" method="POST" style="width:400px;">
+    <legend>登录</legend>
+    {{ form.hidden_tag() }}
+    <div class="form-group">
+        {{ form.email.label }}
+        {{ form.email(class_='form-control') }}
+    </div>
+    <div class="form-group">
+        {{ form.password.label }}
+        {{ form.password(class_='form-control') }}
+    </div>
+    <div class="form-group">
+        {{ form.remember_me }}
+        {{ form.remember_me.label }}
+    </div>
+    <input type="submit" value="登录" class="btn btn-default"/>
+</form>
+{% endblock %}
